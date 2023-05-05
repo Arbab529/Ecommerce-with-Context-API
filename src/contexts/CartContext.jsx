@@ -1,9 +1,27 @@
-import React, { useState, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 
 export const CartContext = createContext();
 const CartProvider = ({ children }) => {
 
     const [cart, setCart] = useState([]);
+    const [itemAmount, setItemAmount] = useState(0);
+    const [total, setTotal] = useState(0);
+
+    useEffect(() => {
+        const total = cart.reduce((accumulator, currentItem) => {
+            return accumulator + currentItem.price * currentItem.amount;
+        }, 0)
+        setTotal(total)
+    }, [cart]);
+
+    useEffect(() => {
+        if (cart) {
+            const amount = cart.reduce((accumulator, currentItem) => {
+                return accumulator + currentItem.amount;
+            }, 0)
+            setItemAmount(amount)
+        }
+    }, [cart]);
 
     const addToCart = (product, id) => {
         const newItem = { ...product, amount: 1 }
@@ -25,7 +43,6 @@ const CartProvider = ({ children }) => {
         }
         console.log(cart);
     }
-
     const removeFromCart = (id) => {
         const newCart = cart.filter(item => {
             return item.id !== id;
@@ -35,7 +52,6 @@ const CartProvider = ({ children }) => {
     const clearCart = () => {
         setCart([]);
     }
-
     const increaseAmount = (id) => {
         const cartItem = cart.find(item => {
             return item.id === id
@@ -67,7 +83,9 @@ const CartProvider = ({ children }) => {
             addToCart,
             removeFromCart,
             increaseAmount,
-            decreaseAmount
+            decreaseAmount,
+            itemAmount,
+            total
         }} >
             {children}
         </CartContext.Provider >
