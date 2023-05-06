@@ -16,6 +16,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/product/:id' element={<ProductDetails />} />
+        <Route path='*' element={<h1 className='h-screen flex justify-center items-center'>Page not found</h1>} />
       </Routes>
       <Sidebar />
       <Footer />

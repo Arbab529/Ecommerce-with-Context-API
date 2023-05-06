@@ -9,13 +9,13 @@ import { CartContext } from '../contexts/CartContext';
 
 const Sidebar = () => {
     const { isOpen, handleClose } = useContext(SidebarContext);
-    const { cart, clearCart, total } = useContext(CartContext);
+    const { cart, clearCart, total, itemAmount } = useContext(CartContext);
 
     return (
         <div className={`${isOpen ? 'right-0' : '-right-full'} w-full bg-white shadow-2xl fixed top-0 h-full md:w-[35vw] lg:w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}>
             {/* Sidebar header */}
             <div className='flex justify-between items-center py-6 border-b'>
-                <div className='uppercase text-sm font-semibold'>Shopping Bag ({`${cart.length}`})</div>
+                <div className='uppercase text-sm font-semibold'>Shopping Bag ({`${itemAmount}`})</div>
                 <div className="cursor-pointer w-8 h-8 flex justify-center items-center" onClick={handleClose}>
                     <IoMdArrowForward className='text-2xl' />
                 </div>

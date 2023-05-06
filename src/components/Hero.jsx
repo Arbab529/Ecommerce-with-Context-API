@@ -3,8 +3,8 @@ import WomanImg from '../assets/img/woman_hero.png'
 import { Link } from 'react-router-dom'
 const Hero = () => {
     return (
-        <section className='bg-pink-500 h-[570px] md:h-[800px] bg-hero bg-cover bg-center py-24'>
-            <div className="container mx-auto flex justify-around h-full">
+        <section className=' h-[570px] md:h-[800px] bg-hero bg-cover bg-center py-24'>
+            <div div className="container mx-auto flex justify-around h-full" >
                 <div className='flex flex-col justify-center'>
                     <div className='font-semibold uppercase flex items-center'>
                         <div className='w-10 h-[2px] bg-orange-600 mr-3'></div>New Trend
@@ -18,8 +18,8 @@ const Hero = () => {
                 <div className='hidden lg:block'>
                     <img src={WomanImg} alt="Hero Image" className='' />
                 </div>
-            </div>
-        </section>
+            </div >
+        </section >
     )
 }
 

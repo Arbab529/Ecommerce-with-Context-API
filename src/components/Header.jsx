@@ -15,16 +15,19 @@ const Header = () => {
         })
     }, []);
     return (
-        <header className={`${isActive ? 'bg-orange-300' : 'bg-white shadow-md'} py-3 fixed w-full z-10 transition`}>
+        <header className={`${isActive ? 'bg-orange-300' : 'bg-white shadow-md'} py-3 px-10 fixed w-full z-10 transition`}>
             <div className='container flex justify-between items-center mx-auto h-full'>
                 <Link to={'/'}>
                     <div >
                         <img src={logo} alt="" className='w-[40px]' />
                     </div>
                 </Link>
-                <div onClick={() => setIsOpen(!isOpen)} className='flex relative cursor-pointer'>
-                    <BsBag className='text-2xl cursor-pointer flex relative' />
-                    <div className='bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] flex items-center justify-center rounded-full text-white'>{itemAmount}</div>
+                <div className='flex items-center gap-7'>
+                    <a href="https://arbab-anjum.netlify.app" target='_blank'>My Portfolio</a>
+                    <div onClick={() => setIsOpen(!isOpen)} className='flex relative cursor-pointer'>
+                        <BsBag className='text-2xl cursor-pointer flex relative' />
+                        <div className='bg-red-500 absolute -right-2 -bottom-2 text-[12px] w-[18px] h-[18px] flex items-center justify-center rounded-full text-white'>{itemAmount}</div>
+                    </div>
                 </div>
             </div>
         </header>
